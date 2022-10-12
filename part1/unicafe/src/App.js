@@ -1,4 +1,4 @@
-//Exercise 1.8
+//Exercise 1.10
 
 import { useState } from "react";
 
@@ -20,13 +20,14 @@ const Statistics = (props) =>
   return(
     <div>
       <h1>statistics</h1>
+      <table>
         <StatisticLine text= "good" value={props.good}/>
-        <StatisticLine text= "neutral" value={props.good}/>
-        <StatisticLine text= "bad" value={props.good}/>
-        <StatisticLine text= "all" value={props.good}/>
+        <StatisticLine text= "neutral" value={props.neutral}/>
+        <StatisticLine text= "bad" value={props.bad}/>
+        <StatisticLine text= "all" value={props.all}/>
         <StatisticLine text= "average" value={props.average}/>
         <StatisticLine text= "positive" value={props.positive}/>
-      
+      </table>
     </div>
   )
 }
