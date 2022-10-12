@@ -1,6 +1,21 @@
-//Exercise 1.7
+//Exercise 1.8
 
 import { useState } from "react";
+
+const Statistics = (props) =>
+{
+  return(
+    <div>
+      <h1>statistics</h1>
+        <p>good {props.good}</p>
+        <p>neutral {props.neutral}</p>
+        <p>bad {props.bad}</p>
+        <p>all {props.all}</p>
+        <p>average {(props.good-props.bad)/props.all}</p>
+        <p>positive {100*props.good/props.all}%</p>
+    </div>
+  )
+}
 
 const App = () =>
 {
@@ -15,14 +30,7 @@ const App = () =>
       <button onClick={()=>setGood(good+1)}>good</button>
       <button onClick={()=>setNeutral(neutral+1)}>neutral</button>
       <button onClick={()=>setBad(bad+1)}>bad</button>
-      <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {(good-bad)/all}</p>
-      <p>positive {100*good/all}%</p>
-  
+      <Statistics good={good} bad={bad} neutral={neutral} all = {all}/>
     </div>
   )
 }
