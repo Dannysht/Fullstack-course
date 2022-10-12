@@ -1,4 +1,4 @@
-//Exercise 1.6
+//Exercise 1.7
 
 import { useState } from "react";
 
@@ -7,6 +7,7 @@ const App = () =>
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const all = good+bad+neutral
 
   return(
     <div>
@@ -18,6 +19,10 @@ const App = () =>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
+      <p>all {all}</p>
+      <p>average {(good-bad)/all}</p>
+      <p>positive {100*good/all}%</p>
+  
     </div>
   )
 }
