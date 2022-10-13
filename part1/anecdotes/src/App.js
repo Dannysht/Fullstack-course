@@ -1,4 +1,4 @@
-//Exercise 1.13
+//Exercise 1.14
 
 import { useState } from "react";
 
@@ -24,12 +24,35 @@ const App = () =>
     setPoints(copy)
   }
 
+  const AnecdoteWithMostVotes = () => 
+  {
+    let currentHighest = 0
+    let index = 0
+    for(let i = 0; i < points.length; ++i)
+    {
+      if(points[i] > currentHighest)
+      {
+        currentHighest = points[i]
+        index = i
+      }
+    }
+    return (
+      <div>
+        <p>{anecdotes[index]}</p>
+        <p>has {currentHighest} votes</p>
+      </div>
+    )
+  }
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {points[selected]} votes</p>
       <button onClick={() => setSelected(Math.floor(Math.random()*7))}>next anecdote</button>
       <button onClick={storeNewVote}>vote</button>
+      <h1>Anecdote with the most votes</h1>
+      <AnecdoteWithMostVotes/>
     </div>
   )
 
