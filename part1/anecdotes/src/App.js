@@ -38,6 +38,7 @@ const App = () =>
     }
     return (
       <div>
+        <h1>Anecdote with the most votes</h1>
         <p>{anecdotes[index]}</p>
         <p>has {currentHighest} votes</p>
       </div>
@@ -51,7 +52,6 @@ const App = () =>
       <p>has {points[selected]} votes</p>
       <button onClick={() => setSelected(Math.floor(Math.random()*7))}>next anecdote</button>
       <button onClick={storeNewVote}>vote</button>
-      <h1>Anecdote with the most votes</h1>
       <AnecdoteWithMostVotes/>
     </div>
   )
