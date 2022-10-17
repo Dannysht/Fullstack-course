@@ -1,4 +1,4 @@
-//Exercise 2.1
+//Exercise 2.2
 
 const App = () =>  
 { 
@@ -55,7 +55,6 @@ const Header = (props) =>
 
 const Content = (props) => 
 {
-  console.log(props.course.parts);
   return(
     <div>
       <Part part = {props.course.parts[0].name} exercises = {props.course.parts[0].exercises}/>
@@ -78,9 +77,17 @@ const Part = (props) =>
 
 const Footer = (props) =>
 {
+  let totalExercises = 0
+  props.course.parts.map(parts => {totalExercises +=parts.exercises;return true})
   return(
     <div>
-      <p>Number of exercises {props.course.exercises}</p>
+      <p>
+        <strong>
+        total of 
+        {" "}{totalExercises}{" "}
+        exercises
+        </strong>
+      </p>
     </div>
   )
 }
