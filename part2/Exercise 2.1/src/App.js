@@ -1,4 +1,4 @@
-//Exercise 2.2
+//Exercise 2.3
 
 const App = () =>  
 { 
@@ -77,8 +77,9 @@ const Part = (props) =>
 
 const Footer = (props) =>
 {
-  let totalExercises = 0
-  props.course.parts.map(parts => {totalExercises +=parts.exercises;return true})
+  //let total = 0
+  let totalExercises = props.course.parts.reduce((first, second) => first + second.exercises, 0)
+  //props.course.parts.map(parts => {totalExercises +=parts.exercises;return true})
   return(
     <div>
       <p>
