@@ -1,4 +1,4 @@
-//Exercise 2.9
+//Exercise 2.10
 
 import {useState} from 'react'
 
@@ -47,7 +47,7 @@ const App = () =>
       const newPerson =
       {
         name: newName,
-        phone: newPhoneNumber
+        number: newPhoneNumber
       }
       setPersons(persons.concat(newPerson))
       setNewName("")
@@ -57,23 +57,51 @@ const App = () =>
   return (
     <div>
       <h2>Phonebook</h2>
-      filter shown with<input onChange={handleFilterChange}/>
-      <h2>add new</h2>
-      <form onSubmit={handleSubmit}>
+      <Filter handleFilterChange = {handleFilterChange}/>
+      <h2>Add a new</h2>
+      <PersonForm handlePhoneChange={handlePhoneChange} handleSubmit={handleSubmit} newName={newName} handleNameChange={handleNameChange} newPhoneNumber={newPhoneNumber}/>
+      <h2>Numbers</h2>
+      <Persons personsToShow={personsToShow}/>
+    </div>
+  )
+
+}
+
+const PersonForm = (props) =>
+{
+  return(
+    <div>
+    <form onSubmit={props.handleSubmit}>
         <div>
-          name: <input value={newName} onChange={handleNameChange} />
+          name: <input value={props.newName} onChange={props.handleNameChange} />
           <br/>
-          number <input value={newPhoneNumber} onChange ={handlePhoneChange}/>
+          number <input value={props.newPhoneNumber} onChange ={props.handlePhoneChange}/>
         </div>
         <div>
           <button type="submit">add</button>
         </div>
       </form>
-      <h2>Numbers</h2>
-      {personsToShow.map(person => <p key={person.name}>{person.name} {person.phone}</p>)}
     </div>
   )
+}
 
+const Filter = (props) =>
+{
+  return(
+    <div>
+    filter shown with<input onChange={props.handleFilterChange}/>
+    </div>
+  )
+  
+}
+
+const Persons = (props) =>
+{
+  return(
+    <div>
+      {props.personsToShow.map(person => <p key={person.name}>{person.name} {person.number}</p>)}
+    </div>
+  )
 }
 
 export default App;
