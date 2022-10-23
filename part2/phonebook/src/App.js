@@ -1,4 +1,4 @@
-//Exercise 2.6
+//Exercise 2.7
 
 import {useState} from 'react'
 
@@ -15,13 +15,24 @@ const App = () =>
 
   const handleSubmit = (event) =>
   {
-    event.preventDefault();
-    const newPerson =
+    let flag = false
+    persons.forEach(person => {
+      if(person.name === newName)
+      {
+        flag = true
+        alert(`${newName} is already added to phonebook`)
+      }
+    })
+    if(flag === false)
     {
-      name: newName
+      event.preventDefault();
+      const newPerson =
+      {
+        name: newName
+      }
+      setPersons(persons.concat(newPerson))
+      setNewName("")
     }
-    setPersons(persons.concat(newPerson))
-    setNewName(" ")
   }
 
   return (
